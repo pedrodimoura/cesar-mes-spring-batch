@@ -8,23 +8,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.github.pedrodimoura.cesarmesspringbatch.model.dao.impl.UserDAO;
-import com.github.pedrodimoura.cesarmesspringbatch.model.entity.impl.User;
+import com.github.pedrodimoura.cesarmesspringbatch.model.entity.impl.Cadastro;
+import com.github.pedrodimoura.cesarmesspringbatch.model.repository.CadastroRepository;
 
 @Controller
 public class UserController {
-
+	
 	@Autowired
-	private UserDAO userDAO;
+	private CadastroRepository cadastroRepository;
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public ResponseEntity<User> save(@RequestBody User user) {
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Cadastro> getCadastro(@RequestBody Cadastro cadastro) {
 
 		try {
-			userDAO.create(user);
-			return new ResponseEntity<User>(user, HttpStatus.OK);
+			cadastro.validate();
+			cadastroRepository.save(cadastro);
+			return new ResponseEntity<Cadastro>(cadastro, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Cadastro>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
