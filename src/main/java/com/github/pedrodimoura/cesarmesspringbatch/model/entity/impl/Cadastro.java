@@ -8,6 +8,51 @@ import com.github.pedrodimoura.cesarmesspringbatch.model.entity.IEntity;
 
 @Entity(name = "cadastro")
 public class Cadastro implements IEntity {
+	
+	public static final String[] NAMES = new String[] {
+			"idServidorPortal",
+			"nome",
+		    "cpf",
+		    "matricula",
+		    "descricaoCargo",
+		    "classeCargo",
+		    "referenciaCargo",
+		    "padraoCargo",
+		    "nivelCargo",
+		    "siglaFuncao",
+		    "nivelFuncao",
+		    "funcao",
+		    "codigoAtividade",
+		    "atividade",
+		    "opcaoParcial",
+		    "codUOrgLotacao",
+		    "uOrgLotacao",
+		    "codOrgLotacao",
+		    "orgLotacao",
+		    "codOrgSupLotacao",
+		    "orgSupLotacao",
+		    "codUOrgExercicio",
+		    "uOrgExercicio",
+		    "codOrgExercicio",
+		    "orgExercicio",
+		    "codOrgSupExercicio",
+		    "orgSupExercicio",
+		    "tipoVinculo",
+		    "situacaoVinculo",
+		    "dataInicioAfastamento",
+		    "dataTerminoAfastamento",
+		    "regimeJuridico",
+		    "jornadaDeTrabalho",
+		    "dataIngressoCargoFuncao",
+		    "dataNomeacaoCargoFuncao",
+		    "dataIngressoOrgao",
+		    "documentoIngressoServicoPublico",
+		    "dataDiplomaIngressoServicoPublico",
+		    "diplomaIngressoCargoFuncao",
+		    "diplomaIngressoOrgao",
+		    "diplomaIngressoServicoPublico",
+		    "ufExercicio"
+	};
 
 	private Long 	idServidorPortal;
 	private String 	nome;
@@ -24,17 +69,17 @@ public class Cadastro implements IEntity {
 	private String 	codigoAtividade;
 	private String 	atividade;
 	private String 	opcaoParcial;
-	private Integer codUOrgLotacao;
+	private String 	codUOrgLotacao;
 	private String 	uOrgLotacao;
-	private Integer codOrgLotacao;
+	private String 	codOrgLotacao;
 	private String 	orgLotacao;
-	private Integer codOrgSupLotacao;
+	private String 	codOrgSupLotacao;
 	private String 	orgSupLotacao;
-	private Integer codUOrgExercicio;
+	private String 	codUOrgExercicio;
 	private String 	uOrgExercicio;
-	private Integer codOrgExercicio;
+	private String 	codOrgExercicio;
 	private String 	orgExercicio;
-	private Integer codOrgSupExercicio;
+	private String 	codOrgSupExercicio;
 	private String 	orgSupExercicio;
 	private Integer tipoVinculo;
 	private String 	situacaoVinculo;
@@ -189,11 +234,11 @@ public class Cadastro implements IEntity {
 	}
 
 	@Column(name = "COD_UORG_LOTACAO")
-	public Integer getCodUOrgLotacao() {
+	public String getCodUOrgLotacao() {
 		return codUOrgLotacao;
 	}
 
-	public void setCodUOrgLotacao(Integer codUOrgLotacao) {
+	public void setCodUOrgLotacao(String codUOrgLotacao) {
 		this.codUOrgLotacao = codUOrgLotacao;
 	}
 
@@ -207,11 +252,11 @@ public class Cadastro implements IEntity {
 	}
 
 	@Column(name = "COD_ORG_LOTACAO")
-	public Integer getCodOrgLotacao() {
+	public String getCodOrgLotacao() {
 		return codOrgLotacao;
 	}
 
-	public void setCodOrgLotacao(Integer codOrgLotacao) {
+	public void setCodOrgLotacao(String codOrgLotacao) {
 		this.codOrgLotacao = codOrgLotacao;
 	}
 
@@ -225,11 +270,11 @@ public class Cadastro implements IEntity {
 	}
 
 	@Column(name = "COD_ORGSUP_LOTACAO")
-	public Integer getCodOrgSupLotacao() {
+	public String getCodOrgSupLotacao() {
 		return codOrgSupLotacao;
 	}
 
-	public void setCodOrgSupLotacao(Integer codOrgSupLotacao) {
+	public void setCodOrgSupLotacao(String codOrgSupLotacao) {
 		this.codOrgSupLotacao = codOrgSupLotacao;
 	}
 
@@ -243,11 +288,11 @@ public class Cadastro implements IEntity {
 	}
 
 	@Column(name = "COD_UORG_EXERCICIO")
-	public Integer getCodUOrgExercicio() {
+	public String getCodUOrgExercicio() {
 		return codUOrgExercicio;
 	}
 
-	public void setCodUOrgExercicio(Integer codUOrgExercicio) {
+	public void setCodUOrgExercicio(String codUOrgExercicio) {
 		this.codUOrgExercicio = codUOrgExercicio;
 	}
 
@@ -261,11 +306,11 @@ public class Cadastro implements IEntity {
 	}
 
 	@Column(name = "COD_ORG_EXERCICIO")
-	public Integer getCodOrgExercicio() {
+	public String getCodOrgExercicio() {
 		return codOrgExercicio;
 	}
 
-	public void setCodOrgExercicio(Integer codOrgExercicio) {
+	public void setCodOrgExercicio(String codOrgExercicio) {
 		this.codOrgExercicio = codOrgExercicio;
 	}
 
@@ -279,11 +324,11 @@ public class Cadastro implements IEntity {
 	}
 
 	@Column(name = "COD_ORGSUP_EXERCICIO")
-	public Integer getCodOrgSupExercicio() {
+	public String getCodOrgSupExercicio() {
 		return codOrgSupExercicio;
 	}
 
-	public void setCodOrgSupExercicio(Integer codOrgSupExercicio) {
+	public void setCodOrgSupExercicio(String codOrgSupExercicio) {
 		this.codOrgSupExercicio = codOrgSupExercicio;
 	}
 

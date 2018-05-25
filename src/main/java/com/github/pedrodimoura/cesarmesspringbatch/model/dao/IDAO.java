@@ -2,10 +2,13 @@ package com.github.pedrodimoura.cesarmesspringbatch.model.dao;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public interface IDAO<T> {
 
-	void create(T t);
+	void save(T t);
+	
+	void saveAll(List<? extends T> collection);
 
 	void update(T t);
 

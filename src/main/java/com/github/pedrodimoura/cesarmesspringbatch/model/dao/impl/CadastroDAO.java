@@ -2,23 +2,29 @@ package com.github.pedrodimoura.cesarmesspringbatch.model.dao.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Repository;
 
 import com.github.pedrodimoura.cesarmesspringbatch.model.dao.IDAO;
 import com.github.pedrodimoura.cesarmesspringbatch.model.entity.impl.Cadastro;
 import com.github.pedrodimoura.cesarmesspringbatch.model.repository.CadastroRepository;
 
-@Configuration
+@Repository
 public class CadastroDAO implements IDAO<Cadastro> {
 
 	@Autowired
 	private CadastroRepository cadastroRepository;
 	
 	@Override
-	public void create(Cadastro t) {
+	public void save(Cadastro t) {
 		cadastroRepository.save(t);
+	}
+	
+	@Override
+	public void saveAll(List<? extends Cadastro> collection) {
+		cadastroRepository.saveAll(collection);
 	}
 
 	@Override
