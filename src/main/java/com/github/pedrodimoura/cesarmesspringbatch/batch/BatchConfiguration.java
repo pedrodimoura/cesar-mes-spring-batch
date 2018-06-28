@@ -7,6 +7,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
+import org.springframework.batch.item.file.MultiResourceItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -17,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.ResourceArrayPropertyEditor;
 
 import com.github.pedrodimoura.cesarmesspringbatch.batch.listener.Listener;
 import com.github.pedrodimoura.cesarmesspringbatch.batch.processor.Processor;
@@ -31,6 +34,20 @@ public class BatchConfiguration {
 
 	@Autowired
 	JobBuilderFactory jobBuilderFactory;
+	
+	public MultiResourceItemReader<Cadastro> multiResourceItemReader() {
+		MultiResourceItemReader<Cadastro> multiResourceItemReader = new MultiResourceItemReader<>();
+		
+		ResourceArrayPropertyEditor resourceLoader = new ResourceArrayPropertyEditor();
+		resourceLoader.setAsText("classpath:data/*20171130*.csv");
+		
+		Resource[] resources = (Resource[]) resourceLoader.getValue();
+		
+		multiResourceItemReader.setResources(resources);
+		multiResourceItemReader.setDelegate(reader());
+		multiResourceItemReader.setName("multiReaderItemReader");
+		return multiResourceItemReader;
+	}
 	
 	@Bean
 	public FlatFileItemReader<Cadastro> reader() {
@@ -81,8 +98,9 @@ public class BatchConfiguration {
 	public Step step() {
 		return stepBuilderFactory
 				.get("step1")
-				.<Cadastro, Cadastro> chunk(5000)
+				.<Cadastro, Cadastro> chunk(50000)
 				.reader(reader())
+				.processor(processor())
 				.writer(writer())
 				.build();
 	}

@@ -5,97 +5,63 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.github.pedrodimoura.cesarmesspringbatch.model.entity.IEntity;
+import com.google.gson.Gson;
 
 @Entity(name = "cadastro")
 public class Cadastro implements IEntity {
-	
-	public static final String[] NAMES = new String[] {
-			"idServidorPortal",
-			"nome",
-		    "cpf",
-		    "matricula",
-		    "descricaoCargo",
-		    "classeCargo",
-		    "referenciaCargo",
-		    "padraoCargo",
-		    "nivelCargo",
-		    "siglaFuncao",
-		    "nivelFuncao",
-		    "funcao",
-		    "codigoAtividade",
-		    "atividade",
-		    "opcaoParcial",
-		    "codUOrgLotacao",
-		    "uOrgLotacao",
-		    "codOrgLotacao",
-		    "orgLotacao",
-		    "codOrgSupLotacao",
-		    "orgSupLotacao",
-		    "codUOrgExercicio",
-		    "uOrgExercicio",
-		    "codOrgExercicio",
-		    "orgExercicio",
-		    "codOrgSupExercicio",
-		    "orgSupExercicio",
-		    "tipoVinculo",
-		    "situacaoVinculo",
-		    "dataInicioAfastamento",
-		    "dataTerminoAfastamento",
-		    "regimeJuridico",
-		    "jornadaDeTrabalho",
-		    "dataIngressoCargoFuncao",
-		    "dataNomeacaoCargoFuncao",
-		    "dataIngressoOrgao",
-		    "documentoIngressoServicoPublico",
-		    "dataDiplomaIngressoServicoPublico",
-		    "diplomaIngressoCargoFuncao",
-		    "diplomaIngressoOrgao",
-		    "diplomaIngressoServicoPublico",
-		    "ufExercicio"
-	};
 
-	private Long 	idServidorPortal;
-	private String 	nome;
-	private String 	cpf;
-	private String 	matricula;
-	private String 	descricaoCargo;
-	private String 	classeCargo;
-	private String 	referenciaCargo;
-	private String 	padraoCargo;
-	private String 	nivelCargo;
-	private String 	siglaFuncao;
-	private String 	nivelFuncao;
-	private String 	funcao;
-	private String 	codigoAtividade;
-	private String 	atividade;
-	private String 	opcaoParcial;
-	private String 	codUOrgLotacao;
-	private String 	uOrgLotacao;
-	private String 	codOrgLotacao;
-	private String 	orgLotacao;
-	private String 	codOrgSupLotacao;
-	private String 	orgSupLotacao;
-	private String 	codUOrgExercicio;
-	private String 	uOrgExercicio;
-	private String 	codOrgExercicio;
-	private String 	orgExercicio;
-	private String 	codOrgSupExercicio;
-	private String 	orgSupExercicio;
+	public static final String[] NAMES = new String[] { "idServidorPortal", "nome", "cpf", "matricula",
+			"descricaoCargo", "classeCargo", "referenciaCargo", "padraoCargo", "nivelCargo", "siglaFuncao",
+			"nivelFuncao", "funcao", "codigoAtividade", "atividade", "opcaoParcial", "codUOrgLotacao", "uOrgLotacao",
+			"codOrgLotacao", "orgLotacao", "codOrgSupLotacao", "orgSupLotacao", "codUOrgExercicio", "uOrgExercicio",
+			"codOrgExercicio", "orgExercicio", "codOrgSupExercicio", "orgSupExercicio", "tipoVinculo",
+			"situacaoVinculo", "dataInicioAfastamento", "dataTerminoAfastamento", "regimeJuridico", "jornadaDeTrabalho",
+			"dataIngressoCargoFuncao", "dataNomeacaoCargoFuncao", "dataIngressoOrgao",
+			"documentoIngressoServicoPublico", "dataDiplomaIngressoServicoPublico", "diplomaIngressoCargoFuncao",
+			"diplomaIngressoOrgao", "diplomaIngressoServicoPublico", "ufExercicio" };
+
+	private Long idServidorPortal;
+	private String nome;
+	private String cpf;
+	private String matricula;
+	private String descricaoCargo;
+	private String classeCargo;
+	private String referenciaCargo;
+	private String padraoCargo;
+	private String nivelCargo;
+	private String siglaFuncao;
+	private String nivelFuncao;
+	private String funcao;
+	private String codigoAtividade;
+	private String atividade;
+	private String opcaoParcial;
+	private String codUOrgLotacao;
+	private String uOrgLotacao;
+	private String codOrgLotacao;
+	private String orgLotacao;
+	private String codOrgSupLotacao;
+	private String orgSupLotacao;
+	private String codUOrgExercicio;
+	private String uOrgExercicio;
+	private String codOrgExercicio;
+	private String orgExercicio;
+	private String codOrgSupExercicio;
+	private String orgSupExercicio;
 	private Integer tipoVinculo;
-	private String 	situacaoVinculo;
-	private String 	dataInicioAfastamento;
-	private String 	dataTerminoAfastamento;
-	private String 	regimeJuridico;
-	private String 	jornadaDeTrabalho;
-	private String 	dataIngressoCargoFuncao;
-	private String 	dataNomeacaoCargoFuncao;
-	private String 	dataIngressoOrgao;
-	private String 	documentoIngressoServicoPublico;
-	private String 	dataDiplomaIngressoServicoPublico;
-	private String 	diplomaIngressoCargoFuncao;
-	private String 	diplomaIngressoOrgao;
-	private String 	diplomaIngressoServicoPublico;
-	private String 	ufExercicio;
+	private String situacaoVinculo;
+	private String dataInicioAfastamento;
+	private String dataTerminoAfastamento;
+	private String regimeJuridico;
+	private String jornadaDeTrabalho;
+	private String dataIngressoCargoFuncao;
+	private String dataNomeacaoCargoFuncao;
+	private String dataIngressoOrgao;
+	private String documentoIngressoServicoPublico;
+	private String dataDiplomaIngressoServicoPublico;
+	private String diplomaIngressoCargoFuncao;
+	private String diplomaIngressoOrgao;
+	private String diplomaIngressoServicoPublico;
+	private String ufExercicio;
 
 	@Id
 	@Column(name = "ID_SERVIDOR_PORTAL")
@@ -142,7 +108,7 @@ public class Cadastro implements IEntity {
 	public void setDescricaoCargo(String descricaoCargo) {
 		this.descricaoCargo = descricaoCargo;
 	}
-	
+
 	@Column(name = "CLASSE_CARGO")
 	public String getClasseCargo() {
 		return classeCargo;
@@ -478,25 +444,7 @@ public class Cadastro implements IEntity {
 
 	@Override
 	public String toString() {
-		return "Cadastro [idServidorPortal=" + idServidorPortal + ", nome=" + nome + ", cpf=" + cpf + ", matricula="
-				+ matricula + ", descricaoCargo=" + descricaoCargo + ", classeCargo=" + classeCargo
-				+ ", referenciaCargo=" + referenciaCargo + ", padraoCargo=" + padraoCargo + ", nivelCargo=" + nivelCargo
-				+ ", siglaFuncao=" + siglaFuncao + ", nivelFuncao=" + nivelFuncao + ", funcao=" + funcao
-				+ ", codigoAtividade=" + codigoAtividade + ", atividade=" + atividade + ", opcaoParcial=" + opcaoParcial
-				+ ", codUOrgLotacao=" + codUOrgLotacao + ", uOrgLotacao=" + uOrgLotacao + ", codOrgLotacao="
-				+ codOrgLotacao + ", orgLotacao=" + orgLotacao + ", codOrgSupLotacao=" + codOrgSupLotacao
-				+ ", orgSupLotacao=" + orgSupLotacao + ", codUOrgExercicio=" + codUOrgExercicio + ", uOrgExercicio="
-				+ uOrgExercicio + ", codOrgExercicio=" + codOrgExercicio + ", orgExercicio=" + orgExercicio
-				+ ", codOrgSupExercicio=" + codOrgSupExercicio + ", orgSupExercicio=" + orgSupExercicio
-				+ ", tipoVinculo=" + tipoVinculo + ", situacaoVinculo=" + situacaoVinculo + ", dataInicioAfastamento="
-				+ dataInicioAfastamento + ", dataTerminoAfastamento=" + dataTerminoAfastamento + ", regimeJuridico="
-				+ regimeJuridico + ", jornadaDeTrabalho=" + jornadaDeTrabalho + ", dataIngressoCargoFuncao="
-				+ dataIngressoCargoFuncao + ", dataNomeacaoCargoFuncao=" + dataNomeacaoCargoFuncao
-				+ ", dataIngressoOrgao=" + dataIngressoOrgao + ", documentoIngressoServicoPublico="
-				+ documentoIngressoServicoPublico + ", dataDiplomaIngressoServicoPublico="
-				+ dataDiplomaIngressoServicoPublico + ", diplomaIngressoCargoFuncao=" + diplomaIngressoCargoFuncao
-				+ ", diplomaIngressoOrgao=" + diplomaIngressoOrgao + ", diplomaIngressoServicoPublico="
-				+ diplomaIngressoServicoPublico + ", ufExercicio=" + ufExercicio + "]";
+		return new Gson().toJson(this);
 	}
 
 	@Override

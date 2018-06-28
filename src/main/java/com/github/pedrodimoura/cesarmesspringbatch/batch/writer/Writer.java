@@ -11,11 +11,16 @@ import com.github.pedrodimoura.cesarmesspringbatch.model.entity.impl.Cadastro;
 public class Writer implements ItemWriter<Cadastro> {
 
 	@Autowired
-	private CadastroDAO cadastroDAO;
+	CadastroDAO cadastroDAO;
 
 	@Override
 	public void write(List<? extends Cadastro> cadastros) throws Exception {
-		cadastroDAO.saveAll(cadastros);
+		try {
+			System.out.println(cadastros.size());
+			cadastros.stream().forEach(cadastroDAO::save);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
