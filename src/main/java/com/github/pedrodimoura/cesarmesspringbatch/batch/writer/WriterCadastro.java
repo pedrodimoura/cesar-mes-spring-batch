@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pedrodimoura.cesarmesspringbatch.model.dao.impl.CadastroDAO;
 import com.github.pedrodimoura.cesarmesspringbatch.model.entity.impl.Cadastro;
 
-public class Writer implements ItemWriter<Cadastro> {
+public class WriterCadastro implements ItemWriter<Cadastro> {
 
 	@Autowired
 	CadastroDAO cadastroDAO;
